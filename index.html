@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/fixed.css">
+    <title>Trivia Game</title>
+</head>
+
+<body>
+    <!--<nav class="navbar navbar-dark fixed-top">
+        <a class="navbar-brand mx-auto" href="#">
+            <p>this is the navbar</p>
+            <img src="#" alt="Trivia Game">
+        </a>
+    </nav>-->
+
+    <!--credit for fullscreen video background to Drew Ryan @https://www.youtube.com/watch?v=aYBGV8ssve4-->
+    <div class="video-background">
+        <div class="video-wrap">
+            <div class="video">
+                <div id="video">
+                    <video id="bgvid" autoplay loop muted playsinline>
+                        <source src="deepSpace.mp4" type="video/mp4">
+                            
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="jumbotron align-items-center">
+            <!--The random trivia question should show here-->
+            <div class="row" id="questions-row">
+                <div class="col-sm text-center" id="question">
+                    <h2 class="lead">This should be where a random question from the object displays!</h2>
+                </div>
+            </div>
+            <!--The answer choices should show here-->
+            <div class="row" id="choices-row">
+                <div class="col-sm text-center h5" id="choice-1">
+                    <button class="btn btn-light" value="ans1"><p>Answer Choice 1</p></button>
+
+
+                </div>
+                <div class="col-sm text-center h5" id="choice-2">
+                    <button class="btn btn-light" value="ans2"><p>Answer Choice 2</p>
+</button>
+                </div>
+                <div class="col-sm text-center h5" id="choice-3">
+                    <button class="btn btn-light" value="ans3"><p>Answer Choice 3</p>
+</button>
+                </div>
+                <div class="col-sm text-center h5" id="choice-4">
+                    <button class="btn btn-light" value="ans3">   <p>Answer Choice 4</p>
+</button>
+                </div>
+            </div>
+            <!--This is where a score should be tallied-->
+            <div class="score">
+                <div class="row">
+                    <div class="col-sm">
+                        <p>User Correct Answers</p>
+                        <p>User Wrong Answers</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
