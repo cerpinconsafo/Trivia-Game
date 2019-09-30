@@ -26,7 +26,7 @@
             <div class="video">
                 <div id="video">
                     <video id="bgvid" autoplay loop muted playsinline>
-                        <source src="deepSpace.mp4" type="video/mp4">
+                        <source src="blackHole.mp4" type="video/mp4">
                             
                     </video>
                 </div>
@@ -34,52 +34,83 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-        <div class="jumbotron align-items-center">
-            <!--The random trivia question should show here-->
-            <div class="row" id="questions-row">
-                <div class="col-sm text-center" id="question">
-                    <h2 class="lead">This should be where a random question from the object displays!</h2>
-                </div>
-            </div>
-            <!--The answer choices should show here-->
-            <div class="row" id="choices-row">
-                <div class="col-sm text-center h5" id="choice-1">
-                    <button class="btn btn-light" value="ans1"><p>Answer Choice 1</p></button>
+    <div class="container ">
+        <!--My start button should be the only thing visible on page load/refresh-->
+        <div>
+            <p class="text-center lead" id="start" onclick="startGame()">Begin.</p>
+        </div>
 
+        <!--game-content holds all of the game divs-->
+        <div id="game-content" style="display: none">
+            <div class="jumbotron justify-content-center align-self-center">
 
+                <!--The random trivia question should show here-->
+
+                <div class="row" id="questions-row">
+                    <div class="col-12 text-center lead" id="questionDiv">Questions should display here.
+
+                    </div>
                 </div>
-                <div class="col-sm text-center h5" id="choice-2">
-                    <button class="btn btn-light" value="ans2"><p>Answer Choice 2</p>
-</button>
-                </div>
-                <div class="col-sm text-center h5" id="choice-3">
-                    <button class="btn btn-light" value="ans3"><p>Answer Choice 3</p>
-</button>
-                </div>
-                <div class="col-sm text-center h5" id="choice-4">
-                    <button class="btn btn-light" value="ans3">   <p>Answer Choice 4</p>
-</button>
-                </div>
-            </div>
-            <!--This is where a score should be tallied-->
-            <div class="score">
+                <!--Display the countdown timer here-->
+
                 <div class="row">
-                    <div class="col-sm">
-                        <p>User Correct Answers</p>
-                        <p>User Wrong Answers</p>
+                    <div class="col-sm text-center lead" id="timerDiv">20 seconds remain.
+
+                    </div>
+                </div>
+                <!--After an asnwer is selected, show this-->
+                <div class="row" id="questions-row">
+                    <div class="col-12 text-center lead" id="postDiv" onclick="showQuestion()">A gif and correct/incorrect message will be displayed here
+
                     </div>
                 </div>
 
+                <!--The answer choices should show here-->
+                <div class="row" id="choices-row">
+                    <div class="lead col-sm text-center">
+                        <div class="choice" id="choice1" onclick="checkAnswer(1)">Answer 1
+                        </div>
+
+                    </div>
+                    <div class="lead col-sm text-center">
+                        <div class="choice" id="choice2" onclick="checkAnswer(2)">Answer 2
+                        </div>
+
+                    </div>
+                    <div class="lead col-sm text-center">
+                        <div class="choice" id="choice3" onclick="checkAnswer(3)">Answer 3
+                        </div>
+
+                    </div>
+                    <div class="lead col-sm text-center">
+                        <div class="choice" id="choice4" onclick="checkAnswer(4)">Answer 4
+                        </div>
+
+                    </div>
+                    <!--This is where a score should be tallied-->
+                    <div class="text-center" id="scoreboard" style=" display:none">
+                        <div class="row">
+                            <div class="col-sm" id="numCorrect">
+                                <p>Change this text to the Amount of Correct
+                                </p>
+                            </div>
+                            <div class="col-sm" id="numWrong">
+                                <p>Change this text to the Amount of Incorrect
+                                </p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
 
             </div>
         </div>
 
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="javascript/app.js"></script>
 </body>
 
 </html>
