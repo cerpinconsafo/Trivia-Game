@@ -17,7 +17,7 @@
 /////
 
 
-////////////////////defining our dom elementas and function variables
+////////////////////defining our dom elements and function variables
 let start = $("#start");
 let gameDisplay = $("#game-content");
 let questionDiv = $("#questionDiv");
@@ -74,6 +74,24 @@ qArr = [{
         answer: "2",
         answerGif: "assets/image/ans_3.gif"
     },
+    {
+        question: "About how old is our Universe expected to be?",
+        choice1: "~13.8 billion years",
+        choice2: "~600,000 years",
+        choice3: "~19.6 million years",
+        choice4: "~230 billion years",
+        answer: "1",
+        answerGif: "assets/image/ans_3.gif"
+    },
+    {
+        question: "How much of our Universe is made up of material that we can ACTUALLY see?",
+        choice1: "~80%",
+        choice2: "less than ~2%",
+        choice3: "less than ~5%",
+        choice4: "55%",
+        answer: "3",
+        answerGif: "assets/image/ans_3.gif"
+    },
 ];
 
 
@@ -86,7 +104,7 @@ let q = qArr[currentQuestion];
 function showQuestion() {
     console.log("showQuestion function is called.");
     console.log(q);
-    postDiv.hide();
+
     gameDisplay.show("slow");
 
 
@@ -116,7 +134,7 @@ function checkAnswer(answer) {
     if (answer == q.answer) {
 
         ////correct answer
-        postDiv.html("You are correct.");
+        postDiv.show("slow").html("You are correct.");
 
         //increase score
         scoreCorrect++;
@@ -159,42 +177,32 @@ function startGame() {
 ////////////////timer functions taken from timer>>interval activity
 
 
+
 function run() {
-    if (hasRun) {
-        intervalId = setInterval(countdown, 1000);
-        hasRun = true;
-
-    }
+    clearInterval(intervalId);
+    intervalId = setInterval(decrement, 1000);
 }
-
+//  The decrement function.
 function countdown() {
-    if (timer > 0) {
-        timer--;
-        timerDiv.html("<h2>" + timer + " seconds remain.</h2>");
-    }
 
+    //  Decrease number by one.
+    timer--;
+
+    //  Show the number in the #show-number tag.
+    $("#timerDiv").html("<h2>" + timer + "</h2>");
+
+
+    //  Once number hits zero...
     if (timer === 0) {
 
+        //  ...run the stop function.
         stop();
-        questionDiv.hide();
-        choice1.hide();
-        choice2.hide();
-        choice3.hide();
-        choice4.hide();
-        postDiv.show();
-        postDiv.html("<h1> You have crossed the event horizon. </h1>");
+        $("#postDiv").show("You ran out of time.");
 
 
-
-
-    }
+    } else { timer--; }
 }
-
-
-
-
+//  The stop function
 function stop() {
-
     clearInterval(intervalId);
-    hasRun = false;
 }
