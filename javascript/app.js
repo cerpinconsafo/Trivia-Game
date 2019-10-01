@@ -98,21 +98,23 @@ qArr = [{
 //////////////////call the questions to be displayed
 actualLastQuestion = qArr.length - 1;
 currentQuestion = 0;
-let q = qArr[currentQuestion];
+//let q = qArr[currentQuestion];
+
 
 
 function showQuestion() {
+    //let q = qArr[currentQuestion];
     console.log("showQuestion function is called.");
-    console.log(q);
+
 
     gameDisplay.show("slow");
 
 
-    questionDiv.html(q.question);
-    choice1.html(q.choice1);
-    choice2.html(q.choice2);
-    choice3.html(q.choice3);
-    choice4.html(q.choice4);
+    questionDiv.html(qArr[currentQuestion].question);
+    choice1.html(qArr[currentQuestion].choice1);
+    choice2.html(qArr[currentQuestion].choice2);
+    choice3.html(qArr[currentQuestion].choice3);
+    choice4.html(qArr[currentQuestion].choice4);
     // console.log(q.question);
     // console.log(q.choice1);
     // console.log(q.choice2);
@@ -121,8 +123,7 @@ function showQuestion() {
     // console.log(q.answer);
     //run timer function
 
-    run();
-    countdown();
+
     // timerDiv.html(timer + " seconds remain");
 
     //if statement for correct answer
@@ -131,10 +132,10 @@ function showQuestion() {
 
 //check answer
 function checkAnswer(answer) {
-    if (answer == q.answer) {
+    if (answer == qArr[currentQuestion].answer) {
 
         ////correct answer
-        postDiv.show("slow").html("You are correct.");
+        postDiv.show("slow").html("<p> You are correct. </p><p>Proceed</p>");
 
         //increase score
         scoreCorrect++;
@@ -142,25 +143,18 @@ function checkAnswer(answer) {
 
         ////add 1 to currentquestion counter so next question is picked 
         currentQuestion++;
+
         console.log(currentQuestion + " is the current index of our Questions array.");
-        console.log(q);
-        stop();
-        showQuestion();
-
-
-
+        console.log(qArr[currentQuestion]);
+        postDiv.click(nextQuestion);
 
     } else {
         ////increase wrong
+        currentQuestion++;
         scoreWrong++;
         console.log(scoreWrong + " wrong answers.")
-        postDiv.html("You are wrong.");
-        currentQuestion++;
-        stop();
-        showQuestion();
-
-        //     }
-        //     if (currentQuestion)
+        postDiv.show("slow").html("You are wrong.");
+        postDiv.click(nextQuestion);
 
     }
 }
@@ -174,35 +168,48 @@ function startGame() {
     showQuestion();
 }
 
+
+////////////////next question 
+
+function nextQuestion() {
+    postDiv.hide();
+
+    console.log(currentQuestion + " is the current index of our Questions array.");
+    questionDiv.html(qArr[currentQuestion].question);
+    choice1.html(qArr[currentQuestion].choice1);
+    choice2.html(qArr[currentQuestion].choice2);
+    choice3.html(qArr[currentQuestion].choice3);
+    choice4.html(qArr[currentQuestion].choice4);
+}
 ////////////////timer functions taken from timer>>interval activity
 
 
 
-function run() {
-    clearInterval(intervalId);
-    intervalId = setInterval(decrement, 1000);
-}
-//  The decrement function.
-function countdown() {
+let run = function() {
+        clearInterval(intervalId);
+        intervalId = setInterval(decrement, 1000);
+    }
+    //  The decrement function.
+let countdown = function() {
 
-    //  Decrease number by one.
-    timer--;
+        //  Decrease number by one.
+        timer--;
 
-    //  Show the number in the #show-number tag.
-    $("#timerDiv").html("<h2>" + timer + "</h2>");
-
-
-    //  Once number hits zero...
-    if (timer === 0) {
-
-        //  ...run the stop function.
-        stop();
-        $("#postDiv").show("You ran out of time.");
+        //  Show the number in the #show-number tag.
+        $("#timerDiv").html("<h2>" + timer + "</h2>");
 
 
-    } else { timer--; }
-}
-//  The stop function
-function stop() {
+        //  Once number hits zero...
+        if (timer === 0) {
+
+            //  ...run the stop function.
+            stop;
+            $("#postDiv").show("You ran out of time.");
+
+
+        } else { timer--; }
+    }
+    //  The stop function
+let stop = function() {
     clearInterval(intervalId);
 }
