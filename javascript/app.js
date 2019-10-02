@@ -23,13 +23,15 @@ let gameDisplay = $("#game-content");
 let questionDiv = $("#questionDiv");
 let timerDiv = $("#timerDiv");
 let postDiv = $("#postDiv");
+let choiceRow = $('#choices-row')
 let choice1 = $("#choice1");
 let choice2 = $("#choice2");
 let choice3 = $("#choice3");
 let choice4 = $("#choice4");
+let scoreBoard = $("#scoreboard")
 let numCorrect = $("#numCorrect");
 let numWrong = $("#numWrong");
-let timer = 20;
+let timer = 31;
 let count = 0;
 let scoreCorrect = 0;
 let scoreWrong = 0;
@@ -48,7 +50,7 @@ qArr = [{
         answerGif: "https://media.giphy.com/media/OANp03XvXEV9u/giphy.gif"
     },
     {
-        question: "What percent our solar system's mass does the Sun hold?",
+        question: "What percent our Solar System's mass does the Sun hold?",
         choice1: "55%",
         choice2: "99.8%",
         choice3: "75.8%",
@@ -107,7 +109,7 @@ function showQuestion() {
     console.log("showQuestion function is called.");
 
 
-    gameDisplay.show("slow");
+
 
 
     questionDiv.html(qArr[currentQuestion].question);
@@ -122,6 +124,8 @@ function showQuestion() {
     // console.log(q.choice4);
     // console.log(q.answer);
     //run timer function
+    run();
+    countdown();
 
 
     // timerDiv.html(timer + " seconds remain");
@@ -134,8 +138,18 @@ function showQuestion() {
 function checkAnswer(answer) {
     if (answer == qArr[currentQuestion].answer) {
 
-        ////correct answer
-        postDiv.show("slow").html("<p> You are correct. </p><p>Proceed</p>");
+        ////stop timer
+        stop();
+        ////hide previous game display elements
+        questionDiv.fadeTo("slow", .25);
+        choiceRow.fadeTo("slow", .25);
+        timerDiv.hide();
+
+
+        ////show correct message
+        postDiv.show("slow").html("<p> Correct. Click to Proceed</p>");
+        postDiv.click(nextQuestion);
+
 
         //increase score
         scoreCorrect++;
@@ -146,14 +160,27 @@ function checkAnswer(answer) {
 
         console.log(currentQuestion + " is the current index of our Questions array.");
         console.log(qArr[currentQuestion]);
-        postDiv.click(nextQuestion);
 
+
+
+
+
+
+    } else if (qArr[currentQuestion] === qArr[actualLastQuestion]) {
+        timerDiv.hide();
+        postDiv.click(endgame);
     } else {
+        stop();
         ////increase wrong
         currentQuestion++;
         scoreWrong++;
+        timerDiv.hide();
+        questionDiv.fadeTo("slow", .25);
+        choiceRow.fadeTo("slow", .25);
+
+
         console.log(scoreWrong + " wrong answers.")
-        postDiv.show("slow").html("You are wrong.");
+        postDiv.show("slow").html("You are wrong.  Click to Proceed.");
         postDiv.click(nextQuestion);
 
     }
@@ -162,7 +189,8 @@ function checkAnswer(answer) {
 
 //hide the start button
 function startGame() {
-    start.hide("slow");
+    start.fadeOut("slow");
+    gameDisplay.show("slow");
 
     //function to show question
     showQuestion();
@@ -172,26 +200,27 @@ function startGame() {
 ////////////////next question 
 
 function nextQuestion() {
-    postDiv.hide();
+    postDiv.hide("fast");
+    questionDiv.fadeTo("fast", 1);
+    choiceRow.fadeTo("fast", 1);
+    timerDiv.show("fast");
 
-    console.log(currentQuestion + " is the current index of our Questions array.");
-    questionDiv.html(qArr[currentQuestion].question);
-    choice1.html(qArr[currentQuestion].choice1);
-    choice2.html(qArr[currentQuestion].choice2);
-    choice3.html(qArr[currentQuestion].choice3);
-    choice4.html(qArr[currentQuestion].choice4);
+    showQuestion();
 }
 ////////////////timer functions taken from timer>>interval activity
 
 
 
-let run = function() {
-        clearInterval(intervalId);
-        intervalId = setInterval(decrement, 1000);
-    }
-    //  The decrement function.
-let countdown = function() {
+function run() {
+    clearInterval(intervalId);
+    intervalId = setInterval(countdown, 1000);
+    timer = 31;
+}
+//  The decrement function.
+function countdown() {
 
+
+    if (timer > 0) {
         //  Decrease number by one.
         timer--;
 
@@ -203,13 +232,30 @@ let countdown = function() {
         if (timer === 0) {
 
             //  ...run the stop function.
-            stop;
-            $("#postDiv").show("You ran out of time.");
+            stop();
+            questionDiv.fadeTo("fast", .25);
+            choiceRow.fadeTo("fast", .25);
+            $("#postDiv").show("slow").html("You ran out of time. Click to continue");
+            postDiv.click(nextQuestion);
 
 
-        } else { timer--; }
+
+        }
     }
-    //  The stop function
-let stop = function() {
+}
+//  The stop function
+function stop() {
     clearInterval(intervalId);
+
+}
+
+//////////////////endgame
+function endgame() {
+
+    questionDiv.hide();
+    choiceRow.hide();
+    timerDiv.hide();
+    scoreBoard.show("slow");
+    numCorrect.html("Correct answers: " + scoreCorrect);
+    numWrong.html("Incorrect answers: " + scoreWrong);
 }

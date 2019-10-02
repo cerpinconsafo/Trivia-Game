@@ -7,18 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/fixed.css">
     <title>Trivia Game</title>
 </head>
 
 <body>
-    <!--<nav class="navbar navbar-dark fixed-top">
-        <a class="navbar-brand mx-auto" href="#">
-            <p>this is the navbar</p>
-            <img src="#" alt="Trivia Game">
-        </a>
-    </nav>-->
 
     <!--credit for fullscreen video background to Drew Ryan @https://www.youtube.com/watch?v=aYBGV8ssve4-->
     <div class="video-background">
@@ -60,7 +55,7 @@
                 </div>
                 <!--After an asnwer is selected, show this-->
                 <div class="row">
-                    <div class="col-12 text-center lead" id="postDiv">A gif and correct/incorrect message will be displayed here
+                    <div class="col-12 text-center lead" id="postDiv">
 
                     </div>
                 </div>
@@ -87,30 +82,31 @@
                         </div>
 
                     </div>
-                    <!--This is where a score should be tallied-->
-                    <div class="text-center" id="scoreboard" style=" display:none">
-                        <div class="row">
-                            <div class="col-sm" id="numCorrect">
-                                <p>Change this text to the Amount of Correct
-                                </p>
-                            </div>
-                            <div class="col-sm" id="numWrong">
-                                <p>Change this text to the Amount of Incorrect
-                                </p>
-                            </div>
-                        </div>
-
-
-                    </div>
                 </div>
+                <!--This is where a score should be tallied-->
+                <div class="text-center" id="scoreboard" style=" display:none">
+                    <div class="row">
+                        <div class="col-sm" id="numCorrect">
+                            <p>Change this text to the Amount of Correct
+                            </p>
+                        </div>
+                        <div class="col-sm" id="numWrong">
+                            <p>Change this text to the Amount of Incorrect
+                            </p>
+                        </div>
+                    </div>
 
+
+                </div>
             </div>
-        </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script src="javascript/app.js"></script>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="javascript/app.js"></script>
 </body>
 
 </html>
