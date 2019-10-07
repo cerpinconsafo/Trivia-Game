@@ -1,0 +1,26 @@
+ /**
+ * 
+ * Write a function that takes "classnames" as a parameter and sorts the class into 5 groups of
+ * 5. These will be your project groups so be clever in how you solve it! :) 
+ * 
+ */
+​
+var classNames = ["Jason", "Ahmed", "Chris", "Sugeeta", "Wiz", "Joseph", "Kaitlyn", "George", "Sergo", "Mohak", "Steven", "Hanna", "Shehryar", "Matt", "Patrick", "Angeli", "Sergio", "Laura", "Dennis", "Brian", "Alex", "Anish", "Moutasz", "Akolade", "Dan", "Emma"]​
+function shuffle(array) {
+    var currentIndex = array.length,
+        temporaryValue, randomIndex;
+
+    while (0 !== currentIndex) {
+
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;​
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+};​
+shuffleNames = shuffle(classNames);
+console.log(shuffleNames);
+

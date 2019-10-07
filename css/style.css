@@ -87,10 +87,10 @@
 }
 
 .choice:hover {
-    transition: box-shadow 1s;
-    transition: background-color 1s;
+    transition: box-shadow .25s;
+    transition: background-color .25s;
     transition: color 2s;
-    transition: font-size, 1s;
+    transition: font-size, .25s;
     padding: 5px;
     background-color: rgba(138, 0, 0, 0.25);
     box-shadow: 0 0 5px #fff, /* outer white */

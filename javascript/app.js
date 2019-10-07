@@ -28,7 +28,7 @@ let choice1 = $("#choice1");
 let choice2 = $("#choice2");
 let choice3 = $("#choice3");
 let choice4 = $("#choice4");
-let scoreBoard = $("#scoreboard")
+let scoreBoard = $("#scoreboard");
 let numCorrect = $("#numCorrect");
 let numWrong = $("#numWrong");
 let timer = 31;
@@ -136,39 +136,30 @@ function showQuestion() {
 
 //check answer
 function checkAnswer(answer) {
-    if (answer == qArr[currentQuestion].answer) {
+    if (qArr[currentQuestion] === qArr[actualLastQuestion]) {
+        timerDiv.hide();
+        postDiv.show();
+        postDiv.click(endgame);
 
-        ////stop timer
+
+    } else if (answer == qArr[currentQuestion].answer) { ////stop timer
         stop();
         ////hide previous game display elements
         questionDiv.fadeTo("slow", .25);
         choiceRow.fadeTo("slow", .25);
         timerDiv.hide();
-
-
         ////show correct message
         postDiv.show("slow").html("<p> Correct. Click to Proceed</p>");
         postDiv.click(nextQuestion);
-
-
         //increase score
         scoreCorrect++;
         console.log(scoreCorrect + " correct answers.");
-
         ////add 1 to currentquestion counter so next question is picked 
         currentQuestion++;
-
         console.log(currentQuestion + " is the current index of our Questions array.");
         console.log(qArr[currentQuestion]);
 
 
-
-
-
-
-    } else if (qArr[currentQuestion] === qArr[actualLastQuestion]) {
-        timerDiv.hide();
-        postDiv.click(endgame);
     } else {
         stop();
         ////increase wrong
@@ -177,8 +168,6 @@ function checkAnswer(answer) {
         timerDiv.hide();
         questionDiv.fadeTo("slow", .25);
         choiceRow.fadeTo("slow", .25);
-
-
         console.log(scoreWrong + " wrong answers.")
         postDiv.show("slow").html("You are wrong.  Click to Proceed.");
         postDiv.click(nextQuestion);
@@ -251,11 +240,14 @@ function stop() {
 
 //////////////////endgame
 function endgame() {
+    console.log('Endgame fired');
+    stop();
 
     questionDiv.hide();
     choiceRow.hide();
     timerDiv.hide();
-    scoreBoard.show("slow");
+    $("#scoreboard").show();
+    //scoreBoard.show("slow");
     numCorrect.html("Correct answers: " + scoreCorrect);
     numWrong.html("Incorrect answers: " + scoreWrong);
 }
