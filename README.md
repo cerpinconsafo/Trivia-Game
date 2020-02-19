@@ -13,7 +13,7 @@
 
 ## Deployed Page
 
-https://cerpinconsafo.github.io/Trivia-Game/
+[Super Massive Space Trivia](https://cerpinconsafo.github.io/Trivia-Game/)
 
 ----
 
