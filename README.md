@@ -1,5 +1,5 @@
 # Space Trivia Game
-#### week 5 Timers - JS/jQuery - Patrick Skolsky
+#### unit 5 Timers - JS/jQuery - Patrick Skolsky
 ----
 
 ## Table of Contents
